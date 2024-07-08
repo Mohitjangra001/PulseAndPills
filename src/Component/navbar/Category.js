@@ -21,7 +21,7 @@ const Category = () => {
       const fetchData = async () =>{
         setLoading(true);
         try {
-          const {data: response} = await axios.get('https://pulsenpills.onrender.com/api');
+          const {data: response} = await axios.get('https://pulsenpills.onrender.com/api/categories');
           setData(response);
         } catch (error) {
           console.error(error.message);
