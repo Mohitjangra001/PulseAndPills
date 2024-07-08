@@ -51,7 +51,7 @@ const BottomNavigation = () => {
       </Link>
       <div className={`absolute -top-8 ${activeItem === 'order-on-call' ? 'text-green-500' : ''}`} onClick={handleOrderOnCallClick}>
         <div className='flex flex-col items-center w-28 h-20 bg-white border-4 border-green-500 rounded-full p-1'>
-          <img src={call} className='w-10 h-10'/>
+          <img src={call} className='w-8 h-8'/>
           <span className="text-xs mt-1 font-bold rounded-full">Order On Call</span>
         </div>
       </div>
