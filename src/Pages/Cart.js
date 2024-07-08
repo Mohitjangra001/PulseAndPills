@@ -4,6 +4,8 @@ import CartItems from '../Component/CartProduct/CartItems';
 import { FaAngleLeft } from "react-icons/fa6";
 import { MdAddLocationAlt } from "react-icons/md";
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Cart({ isLoggedIn }) {
   const navigate = useNavigate();
@@ -50,6 +52,11 @@ function Cart({ isLoggedIn }) {
   };
 
   const handlePlaceOrder = async () => {
+    if (cartProduct.length === 0) {
+      toast.error('Your cart is empty');
+      return;
+    }
+
     if (!isLoggedIn) {
       navigate('/login');
     } else if (!address.trim()) {
@@ -74,21 +81,18 @@ function Cart({ isLoggedIn }) {
           };
 
           await axios.post('https://pulsenpills.onrender.com/api/orders/placeOrder', orderDetails, config);
-          alert('Order placed successfully');
+          toast.success('Order placed successfully');
           navigate('/');
 
           const userResponse = await axios.get('https://pulsenpills.onrender.com/api/users/getUsers', config);
-          const id = userResponse.data._id
+          const id = userResponse.data._id;
           
-          // remove all items
+          // Remove all items
           await axios.delete(`https://pulsenpills.onrender.com/api/cart/clear/${id}`);
-          alert('Order placed successfully');
-          navigate('/');
-
         }
       } catch (error) {
         console.error('Error placing order:', error);
-        alert('Failed to place order');
+        toast.error('Failed to place order');
       }
     }
   };
@@ -159,9 +163,9 @@ function Cart({ isLoggedIn }) {
 
             <div className='md:px-4 w-full my-2'>
               {cartProduct.map((product) => (
-                <CartItems key={product.productId._id} product={product} onRemove={handleRemoveItem} onQuantityChange={handleQuantityChange}
- />
+                <CartItems key={product.productId._id} product={product} onRemove={handleRemoveItem} onQuantityChange={handleQuantityChange} />
               ))}
+              {cartProduct.length === 0 && <p className='text-center text-red-500'>Your cart is empty</p>}
             </div>
           </div>
         </div>
