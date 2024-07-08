@@ -111,12 +111,12 @@ function CartItems({ product, onRemove,onQuantityChange  }) {
 
         <div>
           {/* price */}
-          <div>
+          <div className="mt-2">
             Price: <FormatPrice price={product.productId.offerPrice === 0 ? product.productId.discountFees : product.productId.offerPrice} />
           </div>
 
           {/* increment and decrement */}
-          <div className="py-1 px-2 inline-block bg-white border border-gray-200 rounded-lg mt-5">
+          <div className="py-1 px-2 inline-block bg-white border border-gray-200 rounded-lg mt-6">
             <div className="flex items-center gap-x-1.5">
               <button
                 type="button"
