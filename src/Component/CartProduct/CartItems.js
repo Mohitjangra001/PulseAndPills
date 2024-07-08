@@ -39,7 +39,7 @@ function CartItems({ product, onRemove,onQuantityChange  }) {
   };
 
   const name = product.productId.title;
-  const truncatedName = truncateString(name, 50); // Adjust the number as needed
+  const truncatedName = truncateString(name, 35); // Adjust the number as needed
 
  
   const increment = async () => {
@@ -108,19 +108,15 @@ function CartItems({ product, onRemove,onQuantityChange  }) {
             </button>
           </div>
         </div>
-        <div className="flex flex-row gap-4">
-          <p>Packet size: </p>
-          <div>100</div>
-        </div>
 
         <div>
           {/* price */}
           <div>
-            <FormatPrice price={product.productId.offerPrice === 0 ? product.productId.discountFees : product.productId.offerPrice} />
+            Price: <FormatPrice price={product.productId.offerPrice === 0 ? product.productId.discountFees : product.productId.offerPrice} />
           </div>
 
           {/* increment and decrement */}
-          <div className="py-1 px-2 inline-block bg-white border border-gray-200 rounded-lg mt-6">
+          <div className="py-1 px-2 inline-block bg-white border border-gray-200 rounded-lg mt-5">
             <div className="flex items-center gap-x-1.5">
               <button
                 type="button"
