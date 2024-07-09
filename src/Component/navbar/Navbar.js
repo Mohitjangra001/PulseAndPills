@@ -33,21 +33,12 @@ export const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
           const config = {
             headers: { Authorization: `Bearer ${token}` },
           };
-          const response = await axios.get(
-            `${BASE_URL}/users/getUsers`,
-            config
-          );
+          const response = await axios.get(`${BASE_URL}/users/getUsers`, config);
           setUserName(response.data.firstName);
-          setIsLoggedIn(true); // Ensure isLoggedIn is set to true on successful login
-        } else {
-          setIsLoggedIn(false);
-          navigate("/login");
+          setIsLoggedIn(true);
         }
       } catch (error) {
-        console.error(
-          "Failed to fetch user data:",
-          error.response || error.message
-        );
+        console.error("Failed to fetch user data:", error.response || error.message);
         if (error.response && error.response.status === 401) {
           toast.error("Unauthorized. Please log in.", {
             duration: 4000,
@@ -62,7 +53,7 @@ export const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
     };
 
     fetchUserData();
-  }, [navigate, setIsLoggedIn]);
+  }, [setIsLoggedIn]);
 
   const UploadHandler = () => {
     navigate("/prescription");
