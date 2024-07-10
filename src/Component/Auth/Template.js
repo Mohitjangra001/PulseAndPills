@@ -11,11 +11,13 @@ const Template = ({ title, desc1, desc2, image, formtype, setIsLoggedIn }) => {
           <span className='text-richblack-100'>{desc1}</span><br />
           <span className='text-blue-100 italic'>{desc2}</span>
         </p>
-        {formtype === 'signup' ? (
-          <SignupForm setIsLoggedIn={setIsLoggedIn} />
-        ) : (
+       
+        {formtype === 'login' ? (
           <LoginForm setIsLoggedIn={setIsLoggedIn} />
+        ) : (
+          <SignupForm setIsLoggedIn={setIsLoggedIn} />
         )}
+
       </div>
       <div className=' w-full max-w-[450px] flex justify-center'>
         <img className='' src={image} alt='pattern' width={550} height={500} loading='lazy' />

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios"; // Ensure axios is imported
 import { useDispatch } from "react-redux"; // Import useDispatch from react-redux
 
-function OffersCards({ id, title, price, image, description }) {
+function OffersCards({ id, title, price, image, description,regularPrice }) {
   const dispatch = useDispatch(); // Initialize dispatch
   const imageUrl = Array.isArray(image) && image.length > 0 ? image[0] : '';
 
@@ -35,12 +35,13 @@ function OffersCards({ id, title, price, image, description }) {
     return str.slice(0, num) + '...';
   };
 
-  const truncatedDescription = truncateString(description, 80);
-  const truncatedTitle = truncateString(title, 35);
+  const truncatedDescription = truncateString(description, 65);
+  const truncatedTitle = truncateString(title, 32);
 
   return (
-    <div className="h-[22rem] w-[800px] flex flex-row my-6 rounded-lg border-2 txt-[#184363]">
-      <Link to={`/Product-details/${id}`}>
+    <Link to={`/Product-details/${id}`}>
+
+    <div className="h-[22rem] w-80 sm:w-[610px] flex flex-row my-6 rounded-lg border-2 txt-[#184363]">
         <div>
           <img
             src={imageUrl}
@@ -48,11 +49,13 @@ function OffersCards({ id, title, price, image, description }) {
             className="h-full w-64 object-contain "
           />
         </div>
-      </Link>
       <div className="pl-5 pt-4 pr-3 w-[22rem] gap-1 flex flex-col">
         <h1 className="text-xl font-bold h-16 mb-2">{truncatedTitle}</h1>
+        <div className="flex gap-2 items-center">
+        <div className="text-lg text-[#090F47] opacity-75 line-through">Rs<FormatPrice price={regularPrice}/></div>
         <h2 className="text-xl font-bold h-8"><FormatPrice price={price}/></h2>
-        <ul className="my-8 space-y-2 h-24">{truncatedDescription}</ul>
+        </div>
+        <ul className="my-7 space-y-2 h-24">{truncatedDescription}</ul>
 
         <div>
           <button
@@ -99,6 +102,8 @@ function OffersCards({ id, title, price, image, description }) {
         </div>
       </div>
     </div>
+    </Link>
+
   );
 }
 

@@ -37,6 +37,7 @@ function HomeSectionCarousel() {
         id={product._id} // Use _id instead of id
         name={product.title}
         price={product.offerPrice === 0 ? product.discountFees : product.offerPrice}
+        regularPrice ={product.regularFees}
         offerPrice={product.offerPrice}
         photos={product.images}
         tag={product.tags}

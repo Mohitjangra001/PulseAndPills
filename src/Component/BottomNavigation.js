@@ -31,7 +31,7 @@ const BottomNavigation = () => {
     setShowPopup(true);
     setTimeout(() => {
       setShowPopup(false);
-      window.location.href = 'tel:8708427649'; // Initiates the call
+      window.location.href = 'tel:9888660996'; // Initiates the call
     }, 3000);
   };
 
@@ -49,9 +49,9 @@ const BottomNavigation = () => {
         <img src={PrescriptionUpload} className='w-8 h-8'/>
         <span className="text-xs mt-1">Upload</span>
       </Link>
-      <div className={`absolute -top-8 ${activeItem === 'order-on-call' ? 'text-green-500' : ''}`} onClick={handleOrderOnCallClick}>
-        <div className='flex flex-col items-center w-28 h-20 bg-white border-4 border-green-500 rounded-full p-1'>
-          <img src={call} className='w-8 h-8'/>
+      <div className={`absolute -top-6 ${activeItem === 'order-on-call' ? 'text-green-500' : ''}`} onClick={handleOrderOnCallClick}>
+        <div className='flex flex-col items-center w-24 h-[68px] bg-white border-4 border-green-500 rounded-full p-1'>
+          <img src={call} className='w-6 h-6'/>
           <span className="text-xs mt-1 font-bold rounded-full">Order On Call</span>
         </div>
       </div>

@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import FormatPrice from '../Helper/FormatPrice';
 import { CartContext } from '../../Context/ContextProvider';
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
-function HomeSectionCard({ name, price, photos, tag, id, quantity, offerPrice }) {
+function HomeSectionCard({ name, price, photos, tag, id, quantity, offerPrice,regularPrice }) {
   const product = { name, price, photos, tag, id, quantity };
   const { dispatch } = useContext(CartContext);
 
@@ -29,7 +31,8 @@ function HomeSectionCard({ name, price, photos, tag, id, quantity, offerPrice })
       const response = await axios.post(
         'https://pulsenpills.onrender.com/api/cart/add', // Replace with your backend URL
         { productId: id, quantity: quantity || 1 },
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${token}` } },
+        toast.success('Your order has been added to the cart')
       );
       if (response.status === 201) {
         dispatch({ type: 'Add', product });
@@ -40,7 +43,7 @@ function HomeSectionCard({ name, price, photos, tag, id, quantity, offerPrice })
   };
 
   return (
-    <div className='sm:h-96 h-max w-[12rem] sm:w-[18rem] flex flex-col rounded-xl border-2 md:my-2 my-1 relative'>
+    <div className='sm:h-96 h-max w-[17rem] sm:w-[18rem] flex flex-col rounded-xl border-2 md:my-2 my-1 relative'>
       <Link to={`/Product-details/${id}`}>
         <div className='w-full object-cover h-40 sm:h-48 relative'>
           {photos && photos.length > 0 ? (
@@ -58,8 +61,11 @@ function HomeSectionCard({ name, price, photos, tag, id, quantity, offerPrice })
           <div className='text-[#15A9E3] text-base'>{truncatedTag}</div>
           <h1 className='text-[#184363] font-semibold text-base mb-4'>{truncatedName}</h1>
           <div className='flex flex-row h-10 mb-1 sm:mb-6 justify-between items-center'>
-            <div className='text-[#184363] text-lg'><FormatPrice price={price} /></div>
-            <div className='w-10 h-8 text-center bg-[#4feb54] rounded-full block sm:hidden shadow-md align-middle'>
+          <div className='flex flex-row gap-2'>
+          <div className="text-lg text-[#090F47] opacity-75 line-through">Rs<FormatPrice price={regularPrice}/></div>
+          <div className='text-[#184363] text-xl'><FormatPrice price={price} /></div>
+          </div>
+            <div className='w-12 h-8 text-center bg-[#4feb54] rounded-full block sm:hidden shadow-md align-middle'>
               <button onClick={addToCart}>
                 <AddShoppingCartIcon className='mt-1' />
               </button>

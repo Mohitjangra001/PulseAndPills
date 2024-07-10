@@ -6,6 +6,7 @@ import offer1 from "../Component/Assets/Medicine/offer1.png";
 import offer2 from "../Component/Assets/Medicine/Offer2.png";
 import lastBanner from "../Component/Assets/Medicine/lastBanner.png";
 import MoretoLove from "../Component/Category/MoreToLove/MoretoLove";
+import callBanner from "../Component/Assets/callus.mp4"
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -90,7 +91,6 @@ function Home() {
         <div className="w-full my-4">
           <div className="sm:text-center font-bold mt-6 mb-4 sm:text-2xl text-xl flex flex-row sm:flex-none justify-between items-center">
             <div className="sm:mx-auto">Best Selling Product</div>
-            <div className="text-base sm:hidden text-[#006AFF]">More</div>
           </div>
           <div className="my-4 w-full hidden sm:block">
             <HomeSectionCarosal />
@@ -119,6 +119,7 @@ function Home() {
                     price={product.offerPrice === 0 ? product.discountFees : product.offerPrice}
                     image={product.images}
                     description={product.description}
+                    regularPrice ={product.regularFees}
                     addToCart={() => addToCart(product._id)} // Pass addToCart function here
                   />
                 ))}
@@ -134,6 +135,10 @@ function Home() {
             <img src={offer1} alt="offer1Img" className="hidden  xl:block" />
             <img src={offer2} alt="offer2Img" />
           </div>
+        </div>
+
+        <div className=""> 
+          <video src={callBanner} autoPlay loop="true" className="w-full my-4 mx-auto rounded-lg"/>
         </div>
 
         <div className="mt-6 mb-12">

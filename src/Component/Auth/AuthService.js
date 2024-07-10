@@ -21,7 +21,6 @@ const verifyToken = async () => {
     // Verify token validity on the server side (example endpoint)
     const response = await axios.post(`${BASE_URL}/customerToken/verifyCustomerToken,`, { token });
     return response.data.valid;
-    console.log('Token Verified', response.data);
   } catch (error) {
     console.error('Error verifying token:', error);
     return false; // Token verification failed

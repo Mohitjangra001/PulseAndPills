@@ -15,9 +15,9 @@ function Footer() {
       <div className='w-[87%] m-auto  flex flex-row h-80 pt-10 justify-evenly'>
 
         <div className='flex flex-col gap-2 items-baseline h-11 '>
-          <div className='flex flex-row gap-2 h-full mt-2'>
+          <div className='flex flex-row gap-2 h-full mt-2 items-center'>
             <img src={Logo} alt='logo' className='h-full object-cover'/>
-            <div className='text-2xl text-white font-bold drop-shadow-xl'>PULSE & PILLS</div>
+            <div className='text-2xl text-white font-bold drop-shadow-xl font-Logo_font'>PULSE & PILLS</div>
           </div>
 
           <p className='text-white my-2 font-light'>Stay tuned for latest updates and new features</p>

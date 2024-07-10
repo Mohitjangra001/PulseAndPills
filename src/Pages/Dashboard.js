@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router-dom';
 const BASE_URL = 'https://pulsenpills.onrender.com/api';
 
 
-function Dashboard() {
+function Dashboard( {isLoggedIn, setIsLoggedIn}) {
   const { activepage } = useParams();
   const [userName, setUserName] = useState('');
   const navigate = useNavigate();
@@ -53,7 +53,7 @@ function Dashboard() {
           <UserSidebar activepage={activepage} />
         </div>
         <div className='right'>
-          {activepage === 'accountsettings' && <AccountSettings />}
+          {activepage === 'accountsettings' && <AccountSettings  isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}
           {/* {activepage === 'changepassword' && <ChangePassword />} */}
           {activepage === 'yourorders' && <YourOrders />}
           {/* {activepage === 'address' && <UserAddress />} */}

@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { CiLocationOn } from "react-icons/ci";
 import { FiPhoneCall } from "react-icons/fi";
 import Logo from "../Assets/Logo.png";
+import text from "../Assets/WhatsApp_Image_2024-06-01_at_19.10.43_d1711409-removebg-preview.png";
 import { FaSearch } from "react-icons/fa";
 import { MdOutlineNotifications } from "react-icons/md";
 import { FaCartShopping } from "react-icons/fa6";
@@ -24,6 +25,7 @@ export const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
   const [userName, setUserName] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [cartProduct, setCartProduct] = useState([]);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -36,6 +38,7 @@ export const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
           const response = await axios.get(`${BASE_URL}/users/getUsers`, config);
           setUserName(response.data.firstName);
           setIsLoggedIn(true);
+          
         }
       } catch (error) {
         console.error("Failed to fetch user data:", error.response || error.message);
@@ -120,16 +123,15 @@ export const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
         {/* Logo */}
         <NavLink to="/">
           <div className="flex md:flex-row items-center md:w-48 lg:w-52 xl:w-60 ml-8 h-full relative">
-            <img src={Logo} alt="logo" className="w-20 h-16" />
-            <span className="text-black font-bold text-xl inline w-full">
-              PULSE & PILLS
-            </span>
+            <img src={Logo} alt="logo" className="w-16 h-16 object-contain" />
+            <img src={text} alt="logo" className="w-28 h-16 object-contain" />
+
           </div>
         </NavLink>
 
         {/* Search bar */}
         <div className="m-auto h-full items-center flex flex-row gap-2 relative">
-          <div className="sm:w-72 lg:w-[500px] flex flex-row h-12 mt-2">
+          <div className="sm:w-72 lg:w-[600px] flex flex-row h-12 mt-2">
             <input
               type="text"
               placeholder="What are you looking for?"
@@ -137,8 +139,8 @@ export const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full py-2 px-4 rounded-l-full border border-r-0 border-gray-300 focus:outline-none flex-grow font-inter bg-transparent"
             />
-            <button className="bg-[#F2971F] text-white py-2 px-4 rounded-r-full border border-l-0 border-gray-300 hover:bg-blue-600 transition duration-300 font-inter">
-              <FaSearch />
+            <button className="bg-blue-800 flex items-center justify-center gap-2 text-white py-2 px-4 rounded-r-full hover:bg-blue-600 transition duration-300 font-inter">
+              Search <FaSearch />
             </button>
           </div>
           {/* Search Results Dropdown */}
@@ -164,7 +166,7 @@ export const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
           {/* Upload slip */}
           <div>
             <button
-              className="bg-[#F2971F] sm:w-16 lg:w-28 h-12 rounded-2xl lg:rounded-full font-medium mt-2 text-white lg:text-lg text-lg"
+              className="bg-blue-800 sm:w-16 lg:w-28 h-12 rounded-2xl lg:rounded-full font-medium mt-2 text-white lg:text-lg text-lg"
               onClick={UploadHandler}
             >
               Upload
@@ -177,13 +179,13 @@ export const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
           <div className="flex flex-row items-center gap-5 my-auto text-2xl">
 
             <div>
-              <Link to="/cart" className="relative">
+              <Link to="/cart" className="relative flex justify-center items-center gap-1 font-semibold">
                 {cart.length > 0 && (
                   <span className="text-xs absolute z-10 left-3 -top-3 text-black font-bold">
                     {cart.length}
                   </span>
                 )}
-                <FaCartShopping />
+                 <FaCartShopping />Cart
               </Link>
             </div>
             {/* <div>
@@ -207,12 +209,12 @@ export const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
             ) : (
               <>
                 <Link to="/login">
-                  <button className="bg-richblack-800 text-richblack-100 py-[8px] px-[12px] rounded-[8px] border border-richblack-700">
+                  <button className="bg-blue-900 text-green-100 py-[8px] px-[12px] rounded-[8px] border border-richblack-700">
                     Log in
                   </button>
                 </Link>
                 <Link to="/signup">
-                  <button className="bg-richblack-800 text-richblack-100 py-[8px] px-[12px] rounded-[8px] border border-richblack-700">
+                  <button className="bg-blue-900 text-green-100 py-[8px] px-[12px] rounded-[8px] border border-richblack-700">
                     Sign up
                   </button>
                 </Link>
@@ -223,20 +225,27 @@ export const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
       </div>
 
       {/* Mobile view first section */}
-      <div className="w-full sm:hidden relative h-60 bg-gradient-to-r from-blue-700 to-blue-600 mb-16 rounded-b-[50px]">
-        <div className="w-11/12 flex flex-row justify-between m-auto pt-4 items-end text-white">
-          <div className="flex flex-row gap-1 justify-center items-center">
-            <img src={Logo} className="w-12 h-12 shadow-orange-50" />
-            <h1 className="text-xl font-semibold font-Logo_font">Pulse & Pills</h1>
+      <div className="w-full sm:hidden relative h-60 bg-gradient-to-br from-cyan-100 via-sky-500 to-blue-900 mb-16 rounded-b-[50px]">
+        <div className=" ml-2 mr-3 flex flex-row justify-between m-auto pt-3 items-end text-white">
+          <div className="flex flex-row  justify-center items-center">
+            <img src={Logo} className="w-10 h-12 shadow-orange-50 object-contain" />
+            <img src={text} className="w-24 h-12 shadow-orange-50 object-contain" />
           </div>
+          {/* <div className=''>
+            {isLoggedIn?(<button onClick={handleLogout} className="w-24 h-12">
+              Log out 
+              <LogoutIcon sx={{ fontSize: 25 }} />
+
+            </button>):(<></>)}
+          </div> */}
         </div>
 
         <div className="flex flex-row h-16 mt-11 text-center w-11/12 mx-auto">
           <div className="flex flex-row h-full items-center">
-            <p className="[writing-mode:vertical-lr] text-white text-lg">
+            <p className="[writing-mode:vertical-lr] text-blue-900 font-bold text-lg ">
               Upto
             </p>
-            <div className="bg-gradient-to-r from-yellow-400 to-red-700 bg-clip-text text-transparent text-5xl font-bold border-r-2 border-white pr-4">
+            <div className="bg-gradient-to-r from-red-700 to-yellow-500 bg-clip-text text-transparent text-5xl font-bold border-r-2 border-white pr-4">
               70%
             </div>
             <p className="text-white text-xl ml-3">

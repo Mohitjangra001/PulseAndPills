@@ -24,7 +24,8 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
-    <div className="app-container">
+    <BrowserRouter>
+      <div className="app-container">
         <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -35,14 +36,12 @@ function App() {
           <Route path="/Ayurvedic" element={<Ayurvedic />} />
           <Route path="/Equipment" element={<Equipment />} />
           <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-          <Route path="/signup" element={<Signup isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
-          <Route path="/user/:activepage"
-            element={
+          <Route path="/signup" element={<Signup setIsLoggedIn={setIsLoggedIn} />} />
+
+          <Route path="/user/:activepage" element={
               <PrivateRoute isLoggedIn={isLoggedIn}>
-                <Dashboard />
-              </PrivateRoute>
-            }
-          />
+                <Dashboard isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+              </PrivateRoute>}/>
           <Route path="/Product-details/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart isLoggedIn={isLoggedIn} />} />
           <Route path="*" element={<Error />} />
@@ -50,7 +49,8 @@ function App() {
         </Routes>
         <Footer />
         <BottomNavigation />
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 

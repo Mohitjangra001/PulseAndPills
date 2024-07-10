@@ -76,8 +76,7 @@ function LoginForm({ setIsLoggedIn }) {
             placeholder='Enter Mobile Number'
             name='phoneNumber'
             pattern='[0-9]{10}'
-            maxLength={10}
-          />
+            maxLength={10} />
         </div>
       </label>
       {otpSent && (
@@ -107,8 +106,7 @@ function LoginForm({ setIsLoggedIn }) {
           <button
             type='button'
             onClick={handleSignUpRedirect}
-            className='bg-blue-200 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] mt-4'
-          >
+            className='bg-blue-200 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] mt-4'>
             Sign Up
           </button>
         </>

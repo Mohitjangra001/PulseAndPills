@@ -2,10 +2,16 @@ import React, { useState, useEffect, useRef } from 'react';
 import './AccountSettings.css';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const BASE_URL = 'https://pulsenpills.onrender.com/api';
 
-const AccountSettings = () => {
+const AccountSettings = ({ isLoggedIn=true, setIsLoggedIn }) => {
+
+
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     firstName: '',
     phone: '', 
@@ -46,6 +52,14 @@ const AccountSettings = () => {
     e.preventDefault();
     // Add form submission logic here
     console.log('Form data submitted:', formData);
+  };
+  
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem("token");
+    toast.success("Logged out");
+    navigate("/");
   };
 
   return (
@@ -92,6 +106,13 @@ const AccountSettings = () => {
             onChange={handleChange} 
           />
         </div>
+        <div className=''>
+            {isLoggedIn?(<button onClick={handleLogout} className="w-20 ml-1 h-10 border-2 border-gray-200 rounded-lg mt-3 text-black bg-[#3498db]">
+              Log out 
+
+            </button>):(<></>)}
+            </div>
+        
         <button className='mainbutton1' type='submit'>Save Changes</button>
       </form>
     </div>

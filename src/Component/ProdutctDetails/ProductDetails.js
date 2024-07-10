@@ -148,10 +148,10 @@ function ProductDetails() {
                   <div className="text-xl text-[#090F47] opacity-75 line-through">
                     Rs <FormatPrice price={product.regularFees}/>
                   </div>
-                  <div className="text-2xl md:text-4xl font-bold text-[#090F47] leading-10">
-                    RS.<FormatPrice price={product.offerPrice === 0 ? product.discountFees : product.offerPrice}/>
+                  <div className="md:text-4xl text-2xl font-bold text-[#090F47] leading-10">
+                    Rs.<FormatPrice price={product.offerPrice === 0 ? product.discountFees : product.offerPrice}/>
                   </div>
-                  {product.discountFees > 0 && (
+                  {product.offerPrice > 0 && (
                     <div className=" bg-green-300 text-black text-sm font-semibold px-2 py-1 rounded">
                       Offer Price
                     </div>
@@ -181,7 +181,7 @@ function ProductDetails() {
           {/* description */}
           <div className="mt-8 p-2 min-h-72">
             <div>
-              <ul className="flex flex-row overflow-x-auto  gap-8 md:gap-12 items-start justify-start md:items-center md:justify-center leading-5 md:leading-8 text-lg md:text-xl border-t-2 border-b-2 border-gray-200 my-auto md:my-6">
+              <ul className="flex flex-row overflow-x-auto  gap-8 md:gap-12 items-start justify-start md:items-center md:justify-center leading-5 md:leading-8 text-lg md:text-xl border-t-2 border-b-2 border-gray-200 my-auto  md:my-6">
                 <li onClick={() => setActiveTab("PRODUCT DETAIL")} className={`cursor-pointer inline-block ${activeTab === "PRODUCT DETAIL" ? "font-bold" : ""}`}>PRODUCT DETAIL</li>
                 <li onClick={() => setActiveTab("SAFETY ADVICE")} className={`cursor-pointer ${activeTab === "SAFETY ADVICE" ? "font-bold" : ""}`}>SAFETY ADVICE</li>
                 <li onClick={() => setActiveTab("FAQ")} className={`cursor-pointer ${activeTab === "FAQ" ? "font-bold" : ""}`}>FAQ</li>

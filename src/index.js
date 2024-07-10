@@ -21,10 +21,8 @@ root.render(
     <RecoilRoot>
       <Provider store={store}>
         <ContextProvider>
-          <BrowserRouter>
             <App />
             <Toaster />
-          </BrowserRouter>
         </ContextProvider>
       </Provider>
     </RecoilRoot>

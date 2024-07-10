@@ -14,6 +14,7 @@ function ProductShort({id, name, firstPrice, photos, LastPrice }) {
     }
     return str.slice(0, num) + '...';
   };
+
   // Ensure photos array has at least two elements to access index 1
   const imageUrl = photos && photos.length > 1 ? photos[1] : DefaultProductImage;
   const truncatedName = truncateString(name, 25);
@@ -22,7 +23,7 @@ function ProductShort({id, name, firstPrice, photos, LastPrice }) {
     <Link to={`/Product-details/${id}`}>
     <div className='flex flex-row gap-2 w-[22rem] h-28 m-2 rounded-lg border-2 border-gray-200'>
       <div className='h-28'>
-        <img src={imageUrl} alt='product' className='w-28 h-full object-contain rounded-md' />
+        <img src={imageUrl} alt='product' className='w-28 h-full p-1 object-contain rounded-md' />
       </div>
       <div className='py-4 flex flex-col gap-2'>
         <h1 className='text-base font-medium'>{truncatedName}</h1>

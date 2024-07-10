@@ -31,6 +31,7 @@ const SignupForm = ({ setIsLoggedIn }) => {
    
   };
 
+
   const sendOtpHandler = async () => {
     const accountData = { 
       firstName: formData.firstName,
@@ -56,24 +57,35 @@ const SignupForm = ({ setIsLoggedIn }) => {
 
   const submitHandler = async (event) => {
     event.preventDefault();
+    const verificationData = {
+      phoneNumber: '+91' + formData.phoneNumber,
+      otp: formData.otp,
+    };
+  
+    console.log('Sending verification data:', verificationData);
+  
     try {
-      const verificationData = {
-        phoneNumber: '+91' + formData.phoneNumber,
-        otp: formData.otp,
-      };
       const response = await axios.post('https://pulsenpills.onrender.com/api/users/verify-otp', verificationData);
-      toast.success('Account Created');
-      const token = response.data.token;
-      console.log('Token:', token); 
-      localStorage.setItem('token', token);  
-      navigate('/');
-      return response.data;
-
+      console.log('Verification response:', response.data);
+  
+      if (response.data.success) {
+        toast.success('Account Created');
+        const token = response.data.token;
+        localStorage.setItem('token', token);
+        setIsLoggedIn(true);
+        navigate('/');
+      } else if (response.data.redirectToSignUp) {
+        toast.error('User does not exist, redirecting to signup');
+        navigate('/signup');
+      } else {
+        toast.error('Failed to verify OTP');
+      }
     } catch (error) {
       toast.error('Failed to verify OTP');
-      console.error('Error verifying OTP:', error);
+      console.error('Error verifying OTP:', error.response ? error.response.data : error.message);
     }
   };
+  
 
   return (
     <div className='flex flex-col-reverse md:flex-row w-11/12 max-w-[1160px] py-10 mx-auto gap-x-20 justify-center items-center gap-y-12 md:gap-y-0 mb-20'>

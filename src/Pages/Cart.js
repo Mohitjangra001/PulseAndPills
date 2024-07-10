@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import CartItems from '../Component/CartProduct/CartItems';
+import emptycart from '../Component/Assets/emptyCart.png'
 import { FaAngleLeft } from "react-icons/fa6";
 import { MdAddLocationAlt } from "react-icons/md";
 import axios from 'axios';
@@ -165,7 +166,7 @@ function Cart({ isLoggedIn }) {
               {cartProduct.map((product) => (
                 <CartItems key={product.productId._id} product={product} onRemove={handleRemoveItem} onQuantityChange={handleQuantityChange} />
               ))}
-              {cartProduct.length === 0 && <p className='text-center text-red-500'>Your cart is empty</p>}
+              {cartProduct.length === 0 && <div className='flex flex-col gap-1 items-center justify-center'><img src={emptycart} className='w-80 h-80'/>Your cart is empty</div>}
             </div>
           </div>
         </div>

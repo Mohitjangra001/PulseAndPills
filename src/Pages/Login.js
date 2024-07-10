@@ -3,6 +3,7 @@ import Template from '../Component/Auth/Template'
 import loginImg from "../Component/Assets/authPhoto/login.png"
 
 const Login = ({setIsLoggedIn})=> {
+    setIsLoggedIn(true)
   return (
     <Template 
       title="Welcome Back"
