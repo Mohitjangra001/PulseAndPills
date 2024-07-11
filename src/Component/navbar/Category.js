@@ -61,6 +61,12 @@ const Category = () => {
               </>
             })
           }
+          <Link to="/Lab">
+          <div className="flex flex-col justify-center items-center">
+          <img src={Lab} alt="Lab" className="w-20 h-20 m-auto" />
+                <span>Lab test</span>
+          </div>
+              </Link>
             {/* <li
               onClick={() => {
                 setCategory("");

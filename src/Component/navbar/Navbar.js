@@ -73,7 +73,6 @@ export const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
     "/",
     "/Medicine",
     "/Health",
-    "/Lab",
     "/Surgical",
     "/Ayurvedic",
     "/Equipment",
