@@ -6,6 +6,7 @@ import ChangePassword from '../Component/profile/ChangePassword';
 import UserAddress from '../Component/profile/UserAddress';
 import LegalNotice from '../Component/profile/LegalNotice';
 import YourOrders from '../Component/profile/YourOrders';
+import UserLabTest from '../Component/profile/UserLabTest';
 import './Dashboard.css'; // Assuming you have a CSS file for Dashboard styles
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -56,6 +57,9 @@ function Dashboard( {isLoggedIn, setIsLoggedIn}) {
           {activepage === 'accountsettings' && <AccountSettings  isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}
           {/* {activepage === 'changepassword' && <ChangePassword />} */}
           {activepage === 'yourorders' && <YourOrders />}
+
+          {activepage === 'LabTest' && <UserLabTest/>}
+
           {/* {activepage === 'address' && <UserAddress />} */}
           {activepage === 'legalnotice' && <LegalNotice />}
         </div>
