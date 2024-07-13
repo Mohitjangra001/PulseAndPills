@@ -31,7 +31,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Medicine" element={<Medicine />} />
           <Route path="/Health" element={<Health />} />
-          <Route path="/Lab" element={<Lab />} />
+          <Route path="/Lab" element={<Lab isLoggedIn={isLoggedIn}/>} />
           <Route path="/Surgical" element={<Surgical />} />
           <Route path="/Ayurvedic" element={<Ayurvedic />} />
           <Route path="/Equipment" element={<Equipment />} />

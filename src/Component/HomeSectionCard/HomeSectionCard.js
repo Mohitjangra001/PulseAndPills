@@ -7,7 +7,7 @@ import { CartContext } from '../../Context/ContextProvider';
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-function HomeSectionCard({ name, price, photos, tag, id, quantity, offerPrice,regularPrice }) {
+function HomeSectionCard({ name, price, photos, tag, id, quantity, offerPrice, regularPrice, type }) {
   const product = { name, price, photos, tag, id, quantity };
   const { dispatch } = useContext(CartContext);
 
@@ -61,10 +61,10 @@ function HomeSectionCard({ name, price, photos, tag, id, quantity, offerPrice,re
           <div className='text-[#15A9E3] text-base'>{truncatedTag}</div>
           <h1 className='text-[#184363] font-semibold text-base mb-4'>{truncatedName}</h1>
           <div className='flex flex-row h-10 mb-1 sm:mb-6 justify-between items-center'>
-          <div className='flex flex-row gap-2'>
-          <div className="text-lg text-[#090F47] opacity-75 line-through">Rs<FormatPrice price={regularPrice}/></div>
-          <div className='text-[#184363] text-xl'><FormatPrice price={price} /></div>
-          </div>
+            <div className='flex flex-row gap-2'>
+              <div className="text-lg text-[#090F47] opacity-75 line-through">Rs<FormatPrice price={regularPrice}/></div>
+              <div className='text-[#184363] text-xl'><FormatPrice price={price} /></div>
+            </div>
             <div className='w-12 h-8 text-center bg-[#4feb54] rounded-full block sm:hidden shadow-md align-middle'>
               <button onClick={addToCart}>
                 <AddShoppingCartIcon className='mt-1' />
@@ -73,12 +73,20 @@ function HomeSectionCard({ name, price, photos, tag, id, quantity, offerPrice,re
           </div>
         </div>
       </Link>
-      <button 
-        className='text-center align-middle bg-[#EDF4] h-10 w-full mx-auto rounded-full mb-2 hover:bg-[#7474ca] hidden sm:block' 
-        onClick={addToCart}
-      >
-        Add to Cart
-      </button>
+      {type === 'equipment' || window.location.pathname.includes('/Equipment') ? (
+        <button 
+          className='text-center align-middle bg-[#EDF4] h-10 w-full mx-auto rounded-full mb-2 hover:bg-[#7474ca] hidden sm:block' 
+        >
+          Enquire Now
+        </button>
+      ) : (
+        <button 
+          className='text-center align-middle bg-[#EDF4] h-10 w-full mx-auto rounded-full mb-2 hover:bg-[#7474ca] hidden sm:block' 
+          onClick={addToCart}
+        >
+          Add to Cart
+        </button>
+      )}
     </div>
   );
 }

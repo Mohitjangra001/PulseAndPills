@@ -62,7 +62,7 @@ const Category = () => {
             })
           }
           <Link to="/Lab">
-          <div className="flex flex-col justify-center items-center">
+          <div className="  mt-4 h-36 bg-[#E7EFFF]  md:bg-inherit rounded-2xl text-center pt-4 sm:p-2">
           <img src={Lab} alt="Lab" className="w-20 h-20 m-auto" />
                 <span>Lab test</span>
           </div>

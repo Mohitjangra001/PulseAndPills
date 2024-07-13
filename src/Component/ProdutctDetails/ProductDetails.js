@@ -97,6 +97,9 @@ function ProductDetails() {
     }
   };
 
+  const isEquipment = product.category === '666b2f95c66fdd3ebd54d892' || product.url?.includes('/Equipment');
+
+
   return (
     <div className="p-2 md:px-0 mx-auto w-full md:w-[87%] flex flex-col h-max my-10">
       <ToastContainer />
@@ -170,10 +173,12 @@ function ProductDetails() {
               </div>
               {/* buy buttons */}
               <div className="mt-12 p-4 flex flex-col md:flex-row items-center gap-4 md:gap-8">
-                <button className="w-80 md:w-52 h-14 rounded-lg bg-[#7D8CFF] text-xl hover:bg-[#4B5DE7] font-semibold" 
-                onClick={addToCart}>
-                  Add to bag 
-                  <ShoppingCartOutlinedIcon />
+                <button
+                  className={`w-80 md:w-52 h-14 rounded-lg text-xl font-semibold ${isEquipment ? 'bg-[#FFD700] hover:bg-[#FFC107]' : 'bg-[#7D8CFF] hover:bg-[#4B5DE7]'}`}
+                  onClick={isEquipment ? () => toast.info('Please contact us for more details on rental equipment.') : addToCart}
+                >
+                  {isEquipment ? 'Enquire Now For Rental' : 'Add to bag'}
+                  {!isEquipment && <ShoppingCartOutlinedIcon />}
                 </button>
               </div>
             </div>
