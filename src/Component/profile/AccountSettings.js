@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import LogoutIcon from "@mui/icons-material/Logout";
 
-const BASE_URL = 'https://pulsenpills.onrender.com/api';
+const BASE_URL = 'http://localhost:4000/api';
 
 const AccountSettings = ({ isLoggedIn=true, setIsLoggedIn }) => {
 

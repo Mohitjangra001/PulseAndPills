@@ -13,7 +13,7 @@ function OffersCards({ id, title, price, image, description,regularPrice }) {
     try {
       const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
       const response = await axios.post(
-        'https://pulsenpills.onrender.com/api/cart/add', // Replace with your backend URL
+        'http://localhost:4000/api/cart/add', // Replace with your backend URL
         { productId: id, quantity: 1 }, // Fixed quantity to 1 for this example
         { headers: { Authorization: `Bearer ${token}` } }
       );

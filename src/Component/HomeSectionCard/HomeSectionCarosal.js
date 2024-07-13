@@ -12,7 +12,7 @@ function HomeSectionCarousel() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const { data: response } = await axios.get('https://pulsenpills.onrender.com/api/products');
+        const { data: response } = await axios.get('http://localhost:4000/api/products');
         setProducts(response);
       } catch (error) {
         console.error(error.message);

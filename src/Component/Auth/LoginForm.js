@@ -25,7 +25,7 @@ function LoginForm({ setIsLoggedIn }) {
   const sendOtpHandler = async () => {
     const accountData = { phoneNumber: '+91' + formData.phoneNumber };
     try {
-      await axios.post('https://pulsenpills.onrender.com/api/users/send-otp', accountData);
+      await axios.post('http://localhost:4000/api/users/send-otp', accountData);
       toast.success('OTP Sent');
       setOtpSent(true);
     } catch (error) {
@@ -41,7 +41,7 @@ function LoginForm({ setIsLoggedIn }) {
         phoneNumber: '+91' + formData.phoneNumber,
         otp: formData.otp,
       };
-      const response = await axios.post('https://pulsenpills.onrender.com/api/users/verify-otp', verificationData);
+      const response = await axios.post('http://localhost:4000/api/users/verify-otp', verificationData);
       const token = response.data.token;
       localStorage.setItem('token', token);
       setIsLoggedIn(true);

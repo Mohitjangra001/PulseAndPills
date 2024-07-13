@@ -15,7 +15,7 @@ const UserLabTest = () => {
           headers: { Authorization: `Bearer ${token}` }
         };
         try {
-          const response = await axios.get('http://localhost:4000/api/bookings', config);
+          const response = await axios.get('http://localhost:4000/api/bookings/getLabTest', config);
           const data = response.data;
           setBookings(data);
         } catch (error) {

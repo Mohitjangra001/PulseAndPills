@@ -29,7 +29,7 @@ function HomeSectionCard({ name, price, photos, tag, id, quantity, offerPrice, r
     try {
       const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
       const response = await axios.post(
-        'https://pulsenpills.onrender.com/api/cart/add', // Replace with your backend URL
+        'http://localhost:4000/api/cart/add', // Replace with your backend URL
         { productId: id, quantity: quantity || 1 },
         { headers: { Authorization: `Bearer ${token}` } },
         toast.success('Your order has been added to the cart')
@@ -76,6 +76,7 @@ function HomeSectionCard({ name, price, photos, tag, id, quantity, offerPrice, r
       {type === 'equipment' || window.location.pathname.includes('/Equipment') ? (
         <button 
           className='text-center align-middle bg-[#EDF4] h-10 w-full mx-auto rounded-full mb-2 hover:bg-[#7474ca] hidden sm:block' 
+          onClick={addToCart}
         >
           Enquire Now
         </button>

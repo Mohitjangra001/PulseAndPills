@@ -12,10 +12,10 @@ function CartItems({ product, onRemove,onQuantityChange  }) {
         const config = {
           headers: { Authorization: `Bearer ${token}` }
         };
-        const userResponse = await axios.get(`https://pulsenpills.onrender.com/api/users/getUsers`, config);
+        const userResponse = await axios.get(`http://localhost:4000/api/users/getUsers`, config);
         const userId = userResponse.data._id; // Assuming the response contains user data with _id
 
-        await axios.post('https://pulsenpills.onrender.com/api/cart/remove', {
+        await axios.post('http://localhost:4000/api/cart/remove', {
           userId: userId,
           productId: product.productId._id
         }, config);
@@ -49,10 +49,10 @@ function CartItems({ product, onRemove,onQuantityChange  }) {
         const config = {
           headers: { Authorization: `Bearer ${token}` }
         };
-        const userResponse = await axios.get(`https://pulsenpills.onrender.com/api/users/getUsers`, config);
+        const userResponse = await axios.get(`http://localhost:4000/api/users/getUsers`, config);
         const userId = userResponse.data._id;
 
-        await axios.post('https://pulsenpills.onrender.com/api/cart/add', {
+        await axios.post('http://localhost:4000/api/cart/add', {
           productId: product.productId._id,
           quantity: 1
         }, config);
@@ -72,10 +72,10 @@ function CartItems({ product, onRemove,onQuantityChange  }) {
           const config = {
             headers: { Authorization: `Bearer ${token}` }
           };
-          const userResponse = await axios.get(`https://pulsenpills.onrender.com/api/users/getUsers`, config);
+          const userResponse = await axios.get(`http://localhost:4000/api/users/getUsers`, config);
           const userId = userResponse.data._id;
 
-          await axios.post('https://pulsenpills.onrender.com/api/cart/add', {
+          await axios.post('http://localhost:4000/api/cart/add', {
             productId: product.productId._id,
             quantity: -1
           }, config);

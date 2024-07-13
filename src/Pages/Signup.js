@@ -42,7 +42,7 @@ const SignupForm = ({ setIsLoggedIn }) => {
     console.log('CustomerData:',accountData )
     // const accountData = { ...formData, phoneNumber: '+91' + formData.phoneNumber };
     try {
-      const res = await axios.post('https://pulsenpills.onrender.com/api/users/send-otp', accountData);
+      const res = await axios.post('http://localhost:4000/api/users/send-otp', accountData);
       toast.success('OTP Sent');
       setOtpSent(true);
       const token = res.data.token;
@@ -65,7 +65,7 @@ const SignupForm = ({ setIsLoggedIn }) => {
     console.log('Sending verification data:', verificationData);
   
     try {
-      const response = await axios.post('https://pulsenpills.onrender.com/api/users/verify-otp', verificationData);
+      const response = await axios.post('http://localhost:4000/api/users/verify-otp', verificationData);
       console.log('Verification response:', response.data);
   
       if (response.data.success) {

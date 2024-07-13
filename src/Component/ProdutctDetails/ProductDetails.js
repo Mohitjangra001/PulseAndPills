@@ -25,7 +25,7 @@ function ProductDetails() {
     const getProduct = async () => {
       setLoading(true);
       try {
-        const { data: response } = await axios.get(`https://pulsenpills.onrender.com/api/products/${id}`);
+        const { data: response } = await axios.get(`http://localhost:4000/api/products/${id}`);
         setProduct(response);
         if (response.images && response.images.length > 0) {
           setMainImage(response.images[0]);
@@ -42,7 +42,7 @@ function ProductDetails() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const { data: otherProduct } = await axios.get('https://pulsenpills.onrender.com/api/products');
+        const { data: otherProduct } = await axios.get('http://localhost:4000/api/products');
         setProductRecommed(otherProduct);
       } catch (error) {
         console.error(error.message);
@@ -57,7 +57,7 @@ function ProductDetails() {
     try {
       const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
       const response = await axios.post(
-        'https://pulsenpills.onrender.com/api/cart/add', // Replace with your backend URL
+        'http://localhost:4000/api/cart/add', // Replace with your backend URL
         { productId: id, quantity: quantity || 1 },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -175,9 +175,9 @@ function ProductDetails() {
               <div className="mt-12 p-4 flex flex-col md:flex-row items-center gap-4 md:gap-8">
                 <button
                   className={`w-80 md:w-52 h-14 rounded-lg text-xl font-semibold ${isEquipment ? 'bg-[#FFD700] hover:bg-[#FFC107]' : 'bg-[#7D8CFF] hover:bg-[#4B5DE7]'}`}
-                  onClick={isEquipment ? () => toast.info('Please contact us for more details on rental equipment.') : addToCart}
-                >
+                  onClick={isEquipment ? () => toast.info('Please contact us for more details on rental equipment.') (addToCart) : addToCart}>
                   {isEquipment ? 'Enquire Now For Rental' : 'Add to bag'}
+
                   {!isEquipment && <ShoppingCartOutlinedIcon />}
                 </button>
               </div>
