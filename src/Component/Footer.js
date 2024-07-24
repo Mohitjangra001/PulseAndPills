@@ -45,10 +45,10 @@ function Footer() {
             <ul className='mt-4 text-base font-normal space-y-1 text-gray-200'>
               <li>About us</li>
               <li>Delivery information</li>
-              <li>Privacy Policy</li>
+              <li><a href='/privacy_policy'>Privacy Policy</a></li>
               <li>Sales</li>
             </ul>
-            <p className='mt-4'>Terms & Conditions</p>
+            <p className='mt-4'><a href='/term-condition'>Terms & Conditions</a></p>
           </div>
           <div>
             <p className='font-semibold  text-xl'>Account</p>

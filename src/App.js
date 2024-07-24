@@ -19,6 +19,8 @@ import Signup from "./Pages/Signup";
 import Prescription from "./Pages/Prescription";
 import BottomNavigation from "./Component/BottomNavigation";
 import { useState } from 'react';
+import Term_condition from "./Pages/Term_condition";
+import Privacy_policy from "./Pages/privacy_policy";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -46,6 +48,9 @@ function App() {
           <Route path="/cart" element={<Cart isLoggedIn={isLoggedIn} />} />
           <Route path="*" element={<Error />} />
           <Route path="/prescription" element={<Prescription />} />
+          <Route path="/term-condition" element={<Term_condition/>} />
+          <Route path="/privacy_policy" element={<Privacy_policy/>} />
+
         </Routes>
         <Footer />
         <BottomNavigation />
