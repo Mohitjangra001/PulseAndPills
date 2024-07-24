@@ -21,7 +21,7 @@ const Category = () => {
       const fetchData = async () =>{
         setLoading(true);
         try {
-          const {data: response} = await axios.get('http://localhost:4000/api/categories');
+          const {data: response} = await axios.get('https://pilse-and-pills.el.r.appspot.com/api/categories');
           setData(response);
         } catch (error) {
           console.error(error.message);

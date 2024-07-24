@@ -20,7 +20,7 @@ function Equipment() {
       setLoading(true);
       try {
         const { data: response } = await axios.get(
-          "http://localhost:4000/api/products"
+          "https://pilse-and-pills.el.r.appspot.com/api/products"
         );
         console.log("Fetched data:", response); // Debugging: log fetched data
         setData(response);

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
-const BASE_URL = 'http://localhost:4000/api';
+const BASE_URL = 'https://pilse-and-pills.el.r.appspot.com/api';
 
 const PrescriptionUpload = () => {
   const [file, setFile] = useState(null);

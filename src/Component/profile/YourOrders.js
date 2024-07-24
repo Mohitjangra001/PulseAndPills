@@ -19,7 +19,7 @@ const YourOrders = () => {
                     headers: { Authorization: `Bearer ${token}` }
                 };
                 try {
-                    const response = await axios.get('http://localhost:4000/api/orders/userOrders', config);
+                    const response = await axios.get('https://pilse-and-pills.el.r.appspot.com/api/orders/userOrders', config);
                     const data = response.data;
                     setOrders(data);
                     console.log(data);

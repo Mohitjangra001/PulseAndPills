@@ -17,7 +17,7 @@ const OrderSuccessful = ({ orderId }) => {
                     const config = {
                         headers: { Authorization: `Bearer ${token}` }
                     };
-                    const response = await axios.get(`http://localhost:4000/api/orders/${orderId}`, config);
+                    const response = await axios.get(`https://pilse-and-pills.el.r.appspot.com/api/orders/${orderId}`, config);
                     setOrderData(response.data);
                 }
             } catch (error) {

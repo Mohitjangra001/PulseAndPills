@@ -25,7 +25,7 @@ function ProductDetails() {
     const getProduct = async () => {
       setLoading(true);
       try {
-        const { data: response } = await axios.get(`http://localhost:4000/api/products/${id}`);
+        const { data: response } = await axios.get(`https://pilse-and-pills.el.r.appspot.com/api/products/${id}`);
         setProduct(response);
         if (response.images && response.images.length > 0) {
           setMainImage(response.images[0]);
@@ -42,7 +42,7 @@ function ProductDetails() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const { data: otherProduct } = await axios.get('http://localhost:4000/api/products');
+        const { data: otherProduct } = await axios.get('https://pilse-and-pills.el.r.appspot.com/api/products');
         setProductRecommed(otherProduct);
       } catch (error) {
         console.error(error.message);
@@ -57,7 +57,7 @@ function ProductDetails() {
     try {
       const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
       const response = await axios.post(
-        'http://localhost:4000/api/cart/add', // Replace with your backend URL
+        'https://pilse-and-pills.el.r.appspot.com/api/cart/add', // Replace with your backend URL
         { productId: id, quantity: quantity || 1 },
         { headers: { Authorization: `Bearer ${token}` } }
       );

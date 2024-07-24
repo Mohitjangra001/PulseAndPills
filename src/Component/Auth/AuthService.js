@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {jwtDecode} from 'jwt-decode';
 
-const BASE_URL = 'http://localhost:4000/api'; // Replace with your backend API URL
+const BASE_URL = 'https://pilse-and-pills.el.r.appspot.com/api'; // Replace with your backend API URL
 
 const storeTokenInLocalStorage = (token) => {
   localStorage.setItem('token', token);

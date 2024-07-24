@@ -10,7 +10,7 @@ function MoretoLove() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const { data: response } = await axios.get('http://localhost:4000/api/products');
+        const { data: response } = await axios.get('https://pilse-and-pills.el.r.appspot.com/api/products');
         setProducts(response);
       } catch (error) {
         console.error('Error fetching products:', error.message);

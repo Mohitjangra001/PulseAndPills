@@ -21,7 +21,7 @@ function Lab({ isLoggedIn }) {
   useEffect(() => {
     const fetchLabTests = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/lab-tests");
+        const response = await axios.get("https://pilse-and-pills.el.r.appspot.com/api/lab-tests");
         setLabTests(response.data);
       } catch (error) {
         console.error("Error fetching lab tests:", error);
@@ -74,7 +74,7 @@ function Lab({ isLoggedIn }) {
       };
 
       const userResponse = await axios.get(
-        "http://localhost:4000/api/users/getUsers",
+        "https://pilse-and-pills.el.r.appspot.com/api/users/getUsers",
         config
       );
       const id = userResponse.data._id;
@@ -88,7 +88,7 @@ function Lab({ isLoggedIn }) {
       };
 
       const response = await axios.post(
-        "http://localhost:4000/api/bookings",
+        "https://pilse-and-pills.el.r.appspot.com/api/bookings",
         bookingData
       );
       console.log("Booking created:", response.data);
